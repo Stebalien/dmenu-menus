@@ -69,7 +69,7 @@ def formatMenu(programs):
 def pickProgram(program_map):
     dmenu = subprocess.Popen(("dmenu",) + DMENU_OPTIONS, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
     out, _ = dmenu.communicate(input=formatMenu(program_map).encode())
-    out = out[:-1] # Strip '\n'
+    out = out.decode()[:-1] # Strip '\n'
     if out and out in program_map:
         return program_map[out]
 
